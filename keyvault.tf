@@ -37,3 +37,19 @@ resource "azurerm_key_vault_secret" "atlas_cred" {
 
   depends_on = [module.mongoatlas_users]
 }
+
+resource "azurerm_key_vault_secret" "atlas_conn_string" {
+  for_each     = var.users
+  name         = "${local.secret_names[each.key]}-conn-string"
+  value        = module.mongoatlas_users.credentials[each.key].connection_string
+  key_vault_id = data.azurerm_key_vault.credentials.id
+  content_type = "text/plain"
+  tags = merge(local.all_tags, {
+    "mongodb-username" = module.mongoatlas_users.users[each.key].username
+    "mongodb-project"  = module.mongoatlas_users.users[each.key].project_name
+    },
+    try(var.users[each.key].connection_strings.database_name, "") != "" ? { "mongodb-dbname" = try(var.users[each.key].connection_strings.database_name, "") } : {}
+  )
+
+  depends_on = [module.mongoatlas_users]
+}

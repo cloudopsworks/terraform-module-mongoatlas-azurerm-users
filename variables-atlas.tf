@@ -103,3 +103,12 @@ variable "key_vault_resource_group_name" {
   EOD
   type        = string
 }
+
+variable "hoop_community" {
+  description = <<-EOD
+  hoop_community: true # (Optional) When true, use hoop community/open-source agent format. Community does not support Azure Key Vault as an agent-side secret provider; hoop_connections output will be null. Use enterprise/managed version for _envs/azure/ support, or configure agent env vars manually with _envjson. Default: true.
+  EOD
+  type        = bool
+  default     = true
+  nullable    = false
+}

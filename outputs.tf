@@ -17,13 +17,20 @@ output "users" {
 }
 
 output "hoop_connections" {
-  description = "Hoop connection definitions enriched with Azure Key Vault secret references. Pass as the `connections` input to terraform-module-hoop-connection. Uses hoop.dev _envs/azure/<secret-name> syntax."
-  value = module.mongoatlas_users.hoop_output != null ? {
+  description = "Hoop connection definitions enriched with Azure Key Vault secret references. Pass as the `connections` input to terraform-module-hoop-connection. Community mode returns null (no _azure agent provider); enterprise mode uses _envs/azure/<secret-name>."
+  value = module.mongoatlas_users.hoop_output != null && !var.hoop_community ? {
     for key, conn in module.mongoatlas_users.hoop_output.connections : key => merge(conn, {
       agent_id = module.mongoatlas_users.hoop_output.agent_id
       secrets = {
-        "envvar:CONNECTION_STRING" = "_envs/azure/${azurerm_key_vault_secret.atlas_cred[key].name}"
+        "envvar:CONNECTION_STRING" = "_envs/azure/${azurerm_key_vault_secret.atlas_conn_string[key].name}"
       }
     })
   } : null
+}
+
+output "connection_string_secret_ids" {
+  description = "Map of user keys to Azure Key Vault secret IDs containing only the connection string. Use with hoop community edition by setting agent env vars and referencing via _envjson:ENV_VAR:<key>."
+  value = {
+    for k in keys(var.users) : k => azurerm_key_vault_secret.atlas_conn_string[k].id
+  }
 }
