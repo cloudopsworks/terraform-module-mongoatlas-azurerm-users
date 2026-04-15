@@ -3,6 +3,25 @@
 #     Cloud Ops Works LLC - https://cloudops.works/
 #     Find us on:
 #       GitHub: https://github.com/cloudopsworks
-#       WebSite: https://cloudops.works
+#       WebSite: https://cloudops.works/
 #     Distributed Under Apache v2.0 License
 #
+
+module "mongoatlas_users" {
+  source = "git::https://github.com/cloudopsworks/terraform-module-mongoatlas-users.git?ref=master"
+
+  is_hub     = var.is_hub
+  spoke_def  = var.spoke_def
+  org        = var.org
+  extra_tags = var.extra_tags
+
+  name_prefix                 = var.name_prefix
+  project_id                  = var.project_id
+  project_name                = var.project_name
+  users                       = var.users
+  hoop                        = var.hoop
+  force_reset                 = var.force_reset
+  password_rotation_period    = var.password_rotation_period
+  region                      = var.region
+  password_externally_managed = true
+}
