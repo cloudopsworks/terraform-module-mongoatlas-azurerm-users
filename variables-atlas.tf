@@ -64,6 +64,7 @@ variable "hoop" {
   description = <<-EOD
   hoop:
     enabled: false # (Optional) Enable Hoop.dev connection metadata output. Default: false.
+    community: true # (Optional) When true, use community/open-source agent format. Community does not support Azure Key Vault as agent-side provider; hoop_connections will be null. Use enterprise for _envs/azure/ support. Default: true.
     agent_id: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" # (Required if enabled) Hoop.dev agent ID (UUID). No default.
     tags: # (Optional) Free-form tags for the Hoop connection. Default: {}.
       key: "value"
@@ -102,13 +103,4 @@ variable "key_vault_resource_group_name" {
   key_vault_resource_group_name: "my-rg" # (Required) Resource group name of the Azure Key Vault. No default.
   EOD
   type        = string
-}
-
-variable "hoop_community" {
-  description = <<-EOD
-  hoop_community: true # (Optional) When true, use hoop community/open-source agent format. Community does not support Azure Key Vault as an agent-side secret provider; hoop_connections output will be null. Use enterprise/managed version for _envs/azure/ support, or configure agent env vars manually with _envjson. Default: true.
-  EOD
-  type        = bool
-  default     = true
-  nullable    = false
 }
