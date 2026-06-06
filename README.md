@@ -372,21 +372,19 @@ File a GitHub [issue](https://github.com/cloudopsworks/terraform-module-mongoatl
 
 
 ## DevOps Tools
-[]()
+[Our Products](https://cloudopsworks.co/products/)
+[CI/CD Blueprint](https://cloudopsworks.co/cicd-blueprint/)
+[Open Source](https://cloudopsworks.co/open-source/)
+
 ## Slack Community
 
 
 ## Newsletter
-
-## Office Hours
-
-## Contributing
+[Resources Directory](https://cloudopsworks.co/resources/)
 
 ### Bug Reports & Feature Requests
 
 Please use the [issue tracker](https://github.com/cloudopsworks/terraform-module-mongoatlas-azurerm-users/issues) to report any bugs or file feature requests.
-
-### Developing
 
 
 
@@ -477,4 +475,4 @@ This project is maintained by [Cloud Ops Works LLC][website].
   [share_reddit]: https://reddit.com/submit/?url=https://github.com/cloudopsworks/terraform-module-mongoatlas-azurerm-users
   [share_facebook]: https://facebook.com/sharer/sharer.php?u=https://github.com/cloudopsworks/terraform-module-mongoatlas-azurerm-users
   [share_email]: mailto:?subject=Terraform+MongoDB+Atlas+Users+Management+Module+(Azure)&body=https://github.com/cloudopsworks/terraform-module-mongoatlas-azurerm-users
-  [beacon]: https://ga-beacon.cloudospworks.co/G-QMZVYYN2VN/cloudopsworks/terraform-module-mongoatlas-azurerm-users?pixel&cs=github&cm=readme&an=terraform-module-mongoatlas-azurerm-users
+  [beacon]: https://ga-beacon.cloudopsworks.co/G-QMZVYYN2VN/cloudopsworks/terraform-module-mongoatlas-azurerm-users?pixel&cs=github&cm=readme&an=terraform-module-mongoatlas-azurerm-users
